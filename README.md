@@ -1,27 +1,32 @@
-#  Smart Bookmark
+# Smart Bookmark
 
-A simple full-stack bookmark manager built using Next.js and Supabase.
+A full-stack bookmark manager built using Next.js and Supabase.
 
-##  Features
-
-- Google Login (OAuth)
+## Features
+- Google Authentication
 - Private bookmarks per user
-- Add and delete bookmarks
 - Real-time updates
-- Secure with Row Level Security (RLS)
+- Add & delete bookmarks
 - Deployed on Vercel
 
-##  Tech Stack
+## Challenges Faced
 
-- Next.js (Frontend)
-- Supabase (Database + Auth + Realtime)
-- PostgreSQL
-- Vercel (Deployment)
+1. Google login redirected to localhost after deployment.
+   - Fixed by updating Supabase Authentication → URL Configuration with the Vercel domain.
 
-##  Live Demo
+2. Realtime not working initially.
+   - Resolved by adding the bookmarks table to `supabase_realtime` publication.
 
+3. Data privacy between users.
+   - Implemented Row Level Security (RLS) policies using:
+     ```
+     auth.uid() = user_id
+     ```
+
+## Tech Stack
+- Next.js
+- Supabase (PostgreSQL, Auth, Realtime)
+- Vercel
+
+Live Demo:
 https://smart-bookmark-xi-five.vercel.app/
-
----
-
-This project demonstrates authentication, database integration, real-time updates, and secure data access in a modern full-stack application.
